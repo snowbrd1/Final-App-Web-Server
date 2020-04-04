@@ -1,8 +1,8 @@
 const express = require('express');
-const logger = require('brian');
+const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const tasksRoutes = require('./routes/tasks.routes');
+const adventurerRoutes = require('./routes/adventurer.routes');
 const middleware = require('./middleware/errors.middleware');
 
 const app = express();
@@ -20,8 +20,8 @@ app.use(bodyParser.json());
 // ROUTE-HANDLING MIDDLEWARE FUNCTIONS
 // ************************************
 
-// Handle routes for tasks.
-app.use('/tasks', tasksRoutes); // http://localhost:4000/tasks
+// Handle routes for adventurer.
+app.use('/adventurer', adventurerRoutes); // http://localhost:4000/adventurer
 // app.use('/users', usersRoutes); // http://localhost:4000/users
 
 // Handle 404 requests

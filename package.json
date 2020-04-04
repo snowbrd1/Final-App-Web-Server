@@ -1,15 +1,20 @@
 {
-  "name": "public",
+  "name": "example",
   "version": "1.0.0",
-  "description": "The website that delivers any type of adventure you can dream of anywhere in the world. With links to outfitters, guides, etc. as well as reviews from those who have been there. Search for your next adventure and where you can find it in the world or choose where you want to go and see what there is to offer.  AdventureAnywhere is all the all-encompassing site for the globe trotting adrenaline junkie or the adventurer who wants to see what their “backyard” has to offer.\r Future edits to come\r #\u0000 \u0000T\u0000e\u0000s\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000T\u0000e\u0000s\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000T\u0000e\u0000s\u0000t\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "description": "Example test app",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./src"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
