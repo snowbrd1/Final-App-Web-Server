@@ -2,8 +2,8 @@
 exports.CREATE_ADVENTURER_TABLE = `CREATE TABLE IF NOT EXISTS adventurer(
     id int NOT NULL AUTO_INCREMENT,
     name VARCHAR(50),
-    sport VARCHAR(50) NULL DEFAULT 'null',
-    location VARCHAR(100) NULL DEFAULT 'null' ,
+    sport VARCHAR(50) NOT NULL,
+    location VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
   )`;
 
@@ -22,7 +22,7 @@ exports.CREATE_ADVENTURER_TABLE = `CREATE TABLE IF NOT EXISTS adventurer(
    * - column names match the order the are in the table
    * - `?` allow us to use params in our controllers
    */
-  exports.INSERT_ADVENTURER = `INSERT INTO adventurer (name) VALUES (?)`;
+  exports.INSERT_ADVENTURER = `INSERT INTO adventurer (id, location, name, sport) VALUES (?)`;
   
   /**
    * Update follows syntax:
