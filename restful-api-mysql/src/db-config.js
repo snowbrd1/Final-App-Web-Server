@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 const authQueries = require('./queries/auth.queries');
-const adventurerqueries = require('./queries/adventurer.queries');
+const adventurerQueries = require('./queries/adventurer.queries');
 
 // Get the Host from Environment or use default
 const host = process.env.DB_HOST || 'localhost';
