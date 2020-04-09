@@ -1,36 +1,43 @@
 const mysql = require('mysql');
-const authQueries = require('./queries/auth.queries');
-const adventurerQueries = require('./queries/adventurer.queries');
+const { CREATE_USER_TABLE } = require('./queries/user.queries');
+const { CREATE_ADVENTURE_TABLE } = require('./queries/adventure.queries');
+const query = require('./utils/query');
 
 // Get the Host from Environment or use default
 const host = process.env.DB_HOST || 'localhost';
+
 // Get the User for DB from Environment or use default
 const user = process.env.DB_USER || 'root';
+
 // Get the Password for DB from Environment or use default
 const password = process.env.DB_PASS || '';
+
 // Get the Database from Environment or use default
-const database = process.env.DB_DATABASE || 'finalapp';
+const database = process.env.DB_DATABASE || 'final';
+
 // Create the connection with required details
-const con = mysql.createConnection({
-  host,
-  user,
-  password,
-  database
-});
-// Connect to the database.
-con.connect(function(err) {
-  if (err) throw err;
-  console.log('Connected!');
+module.exports = async () =>
+  new Promise(async (resolve, reject) => {
+    const con = mysql.createConnection({
+      host,
+      user,
+      password,
+      database,
+    });
 
-  con.query(authQueries.CREATE_USERS_TABLE, function(err, result) {
-    if (err) throw err;
-    console.log('Users table created or exists already!');
+    const userTableCreated = await query(con, CREATE_USER_TABLE).catch(
+      (err) => {
+        reject(err);
+      }
+    );
+
+    const adventureTableCreated = await query(con, CREATE_ADVENTURE_TABLE).catch(
+      (err) => {
+        reject(err);
+      }
+    );
+
+    if (!!userTableCreated && !!adventureTableCreated) {
+      resolve(con);
+    }
   });
-
-  con.query(adventurerQueries.CREATE_ADVENTURER_TABLE, function(err, result) {
-    if (err) throw err;
-    console.log('Adventurer table created or exists already!');
-  });
-});
-
-module.exports = con;
