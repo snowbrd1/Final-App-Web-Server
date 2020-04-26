@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth.routes');
 const userRoutes = require('./routes/user.routes');
-const adventureRoutes = require('./routes/adventure.routes');
+const adventurersRoutes = require('./routes/adventurers.routes');
 const { error404, error500 } = require('./middleware/errors.middleware');
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(cors());
 // Partial API endpoints
 app.use('/api/auth', authRoutes); // http://localhost:4000/api/auth
 app.use('/api/user', userRoutes); // http://localhost:4000/api/user
-app.use('/api/adventure', adventureRoutes); // http://localhost:4000/api/adventure
+app.use('/api/adventurers', adventurersRoutes); // http://localhost:4000/api/adventurers
 
 // Handle 404 requests
 app.use(error404);
